@@ -8,7 +8,22 @@ publication.config(function($routeProvider){
 	
 	.when('/index', {
 		templateUrl: path + 'index.view.html',
-		controller: 'AdminController'
+		controller: 'IndexController'
+	})
+	
+	.when('/institutions', {
+		templateUrl: path + 'institutions.view.html',
+		controller: 'InstitutionsController'
+	})
+	
+	.when('/themes', {
+		templateUrl: path + 'themes.view.html',
+		controller: 'ThemesController'
+	})
+	
+	.when('/skills', {
+		templateUrl: path + 'skills.view.html',
+		controller: 'SkillsController'
 	})
 	
 	.otherwise({
@@ -28,4 +43,4 @@ publication.config(function($mdThemingProvider) {
 
   });
 
-window.onAuctionControllers = angular.module('mapSkillsControllers', []);
+window.mapSkillsControllers = angular.module('mapSkillsControllers', []);

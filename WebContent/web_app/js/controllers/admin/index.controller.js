@@ -1,10 +1,11 @@
-onAuctionControllers.controller("AdminController",  function($scope) {
+mapSkillsControllers.controller("IndexController",  function($scope) {
 	
 	teal();
 	orange();
 	blue();
 	red();
-
+	
+	
 	$scope.labels = ["Janeiro", "Fevereiro", "Março", "Abril", "Maio", "Junho", "Julho"];
 	$scope.series = ['Series A', 'Series B', 'Series C'];
 	$scope.data = [

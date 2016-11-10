@@ -27,4 +27,4 @@ publication.config(function($mdThemingProvider) {
 
   });
 
-window.onAuctionControllers = angular.module('mapSkillsControllers', []);
+window.mapSkillsControllers = angular.module('mapSkillsControllers', []);

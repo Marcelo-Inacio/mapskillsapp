@@ -41,7 +41,7 @@
 		
 			<div ng-include=" 'web_app/html/navbar-top.html' "></div>
 			
-			<div ng-include=" 'web_app/html/sidebar-menu.html' "></div>
+			<div ng-include=" 'web_app/html/admin/sidebar-menu-admin.html' "></div>
 						
 			<div ng-view></div>
 				
@@ -73,7 +73,11 @@
 		
 		
 		<!-- CONTROLLERS -->
-		<script src="web_app/js/controllers/admin.controller.js"></script>
+		<script src="web_app/js/controllers/admin/sidebar-menu-admin.controller.js"></script>
+		<script src="web_app/js/controllers/admin/index.controller.js"></script>
+		<script src="web_app/js/controllers/admin/institutions.controller.js"></script>
+		<script src="web_app/js/controllers/admin/skills.controller.js"></script>
+		<script src="web_app/js/controllers/admin/themes.controller.js"></script>
 		
 		<!-- LIBRARIES TEMPLATE -->						
 		<script src="web_app/lib/js/jquery-1.11.3.min.js"></script>

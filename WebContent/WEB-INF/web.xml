@@ -6,7 +6,7 @@
 	<display-name>mapskillsapp</display-name>
 	
 	<welcome-file-list>
-		<welcome-file>web_app/html/admin/administrator.html</welcome-file>
+		<welcome-file>web_app/html/login.html</welcome-file>
 	</welcome-file-list>
 	
 </web-app>
