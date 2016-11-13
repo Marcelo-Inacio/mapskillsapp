@@ -1,11 +1,17 @@
-mapSkillsControllers.controller("SideBarMenuController",  function($scope) {
+mapSkillsControllers.controller("SideBarMenuController",  function($scope, loginService) {
 	
 	$scope.goPage = _goPage;
+	$scope.logout = _logout;
+	
+	$scope.user;
 	
 	$scope.ngclass = [{indexClass : "active"},
 	                  {institutionsClass : ""},
 	                  {themesClass : ""},
-	                  {skillsClass : ""}];
+	                  {skillsClass : ""},
+	                  
+	                  {studentsClass : ""},
+	                  {statisticsClass : ""}];
 	
 	/**
 	 * função para ativação do class dos botões de navegação.
@@ -19,5 +25,13 @@ mapSkillsControllers.controller("SideBarMenuController",  function($scope) {
 	}
 	
 	_goPage("index");
+	
+	(function(){
+		$scope.user = StorageHelper.getItem('user');
+	})();
+	
+	function _logout() {
+		loginService.logout();
+	}
 	
 });

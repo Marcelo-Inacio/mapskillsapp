@@ -2,11 +2,21 @@ window.publication =  angular.module('mentor', ['ngMaterial', 'ngMessages', 'ngA
 
 publication.config(function($routeProvider){
 	
-	var path = 'web_app/html/mentor/view/';
+	var path = 'view/';
 	$routeProvider
 
 	.when('/index', {
 		templateUrl: path + 'index.view.html',
+		controller: 'IndexController'
+	})
+	
+	.when('/students', {
+		templateUrl: path + 'students.view.html',
+		controller: 'IndexController'
+	})
+	
+	.when('/statistics', {
+		templateUrl: path + 'statistics.view.html',
 		controller: 'IndexController'
 	})
 

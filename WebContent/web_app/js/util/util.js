@@ -31,6 +31,6 @@ function getToken() {
  * funcionalidade que retorna a URL padrao de recursos ao servidor
  */
 function getDefaultUrlPath() {
-	return "http://192.168.0.16:8080/mapskills";
+	return "http://localhost:8080/mapskills";
 }
 

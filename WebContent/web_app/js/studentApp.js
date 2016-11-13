@@ -2,7 +2,7 @@ window.publication =  angular.module('student', ['ngMaterial', 'ngMessages', 'ng
 
 publication.config(function($routeProvider){
 	
-	var path = 'web_app/html/student/view/';
+	var path = 'view/';
 	$routeProvider
 
 	.when('/index', {
