@@ -1,0 +1,26 @@
+{
+  "name": "mapskillsapp",
+  "authors": [
+    "Marcelo <marcelomcl_10@hotmail.com>"
+  ],
+  "description": "projeto front end do trabalho de graduação pela Fatec Jessen Vidal SJC, curso banco de dados.",
+  "main": "",
+  "keywords": [
+    "angularjs"
+  ],
+  "license": "MIT",
+  "homepage": "https://github.com/Marcelo-Inacio/mapskillsapp",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "angular": "1.5.8",
+    "angular-route": "1.5.8",
+    "jquery": "3.1.1",
+    "bootstrap": "3.3.7"
+  }
+}
