@@ -1,4 +1,4 @@
-window.publication =  angular.module('mentor', ['ngMaterial', 'ngMessages', 'ngAnimate', 'ui.bootstrap', 'ngRoute', 'mapSkillsControllers']);
+window.publication =  angular.module('mentor', ['ngMaterial', 'chart.js','ngMessages', 'ngAnimate', 'ui.bootstrap', 'ngSanitize', 'ngRoute', 'mapSkillsControllers']);
 
 publication.config(function($routeProvider){
 	
@@ -17,7 +17,7 @@ publication.config(function($routeProvider){
 	
 	.when('/statistics', {
 		templateUrl: path + 'statistics.view.html',
-		controller: 'IndexController'
+		controller: 'StatisticsController'
 	})
 
 	.otherwise({

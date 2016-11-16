@@ -3,7 +3,7 @@ window.publication =  angular.module('administrator', ['ngMaterial', 'ngMessages
 
 publication.config(function($routeProvider){
 	
-	var path = 'web_app/html/admin/view/';
+	var path = '../../html/admin/view/';
 	$routeProvider
 	
 	.when('/index', {

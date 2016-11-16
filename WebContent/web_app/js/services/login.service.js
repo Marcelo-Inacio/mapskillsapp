@@ -8,6 +8,7 @@ publication.factory("loginService", ['$http', '$q', function ($http, $q) {
 	function _logout() {
 		StorageHelper.removeItem('Authorization');
 		StorageHelper.removeItem('user');
+		StorageHelper.removeItem('page');
 		_validate(null);
 	}
 	

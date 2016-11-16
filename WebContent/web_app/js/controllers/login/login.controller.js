@@ -3,12 +3,15 @@ mapSkillsControllers.controller("LoginController",  function($scope, $http, logi
 	var urlPath = getDefaultUrlPath();
 	var userIsLogged = false;
 
-	$scope.userLogin;
+	$scope.userLogin = {username: null, password: null};
 	
 	$scope.login = _login;
 	$scope.logout = _logout;
 	
 	function _login(userLogin) {
+		if($scope.userLogin.username == null || $scope.userLogin.password == null) {
+			return;
+		}
 		console.log(userLogin);
 		var json = JSON.stringify(userLogin);
 		console.log(json);
@@ -52,7 +55,7 @@ mapSkillsControllers.controller("LoginController",  function($scope, $http, logi
 	function _redirect(profile) {
 		switch(profile) {
 	        case 'ADMINISTRATOR':
-	        	document.location.href = 'administrator.html';
+	        	document.location.href = 'web_app/html/admin/administrator.html';
 	        	break;
 	        case 'MENTOR':
 	        	document.location.href = 'web_app/html/mentor/mentor.html';

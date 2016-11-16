@@ -11,7 +11,7 @@
 		<!-- <link rel="shortcut icon" href="web_apps/images/site/logo/logo_icone.ico" type="image/x-icon" />  -->
 		
 		<!-- Bootstrap -->
-		<link href="../../lib/css/bootstrap.min.css" rel="stylesheet"> 
+		<link href="../../../lib/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet"> 
 		
 		<!-- Loading third party fonts -->
 		<link rel="stylesheet" href="../../lib/css/font-awesome.min.css">
@@ -25,6 +25,9 @@
 		<link href="../../lib/css/datepicker3.css" rel="stylesheet">
 		<link href="../../lib/css/styles.css" rel="stylesheet">
 		
+		<!-- STYLES -->
+		<link href="../../css/content.css" rel="stylesheet">
+		
 		<!--ICONS-->
 		<script src="../../lib/js/lumino.glyphs.js"></script>
 
@@ -35,36 +38,40 @@
 	      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
 	    <![endif]-->
 	</head>
-	<body  ng-app="mentor" ng-cloak="">
+	<body ng-app="mentor" ng-cloak="">
   
-		<div>
+		<div class="row" ng-include=" '../navbar-top.html' "></div>
+
+
+		<div ng-include=" 'sidebar-menu-mentor.html' "></div>
 		
-			<div ng-include=" '../navbar-top.html' "></div>
-			
-			<div ng-include=" 'sidebar-menu-mentor.html' "></div>
-			
-			<div ng-view></div>
-						
-			
-				
-		</div>
+		<div ng-view></div>
+		
+		<!-- <div ng-include=" '../footer.html' "></div>  -->
+
+
 
 
 		<!-- ANGULAR JS -->
-		<script src="../../lib/js/angular.min.js"></script>
-		<script src="../../lib/js/angular-route.js"></script>
+		<script src="../../../lib/angular/angular.min.js"></script>
+		<script src="../../../lib/angular-route/angular-route.min.js"></script>
+		<script src="../../../lib/angular-animate/angular-animate.min.js"></script>
+		<script src="../../../lib/angular-touch/angular-touch.min.js"></script>
+		<script src="../../../lib/angular-bootstrap/ui-bootstrap.js"></script>
+		<script src="../../../lib/angular-aria/angular-aria.min.js"></script>
+		<script src="../../../lib/angular-messages/angular-messages.min.js"></script>
+		<script src="../../../lib/angular-sanitize/angular-sanitize.min.js"></script>
 		<script src="../../lib/js/angular-locale_pt-br.js"></script>
 
-		<!-- LIBRARIES -->
-		<script src="../../lib/js/Chart.js"></script>
-		<script src="../../lib/js/ui-bootstrap.js"></script>
-		<script src="../../lib/js/angular-chart.min.js"></script>
-		<script src="../../lib/js/angular-animate.min.js"></script>
-		<script src="../../lib/js/angular-aria.min.js"></script>
-		<script src="../../lib/js/angular-messages.min.js"></script>
+
+		<!-- CHART -->
+		<script src="../../../lib/chart/dist/Chart.js"></script>
+		<script src="../../../lib/angular-chart/dist/angular-chart.min.js"></script>
 		
 		<!-- Angular Material Library -->
 		<script src="../../lib/js/angular-material.min.js"></script>
+		
+		
 		
 		<!-- APP AANGULAR -->
 		<script src="../../js/mentorApp.js"></script>
@@ -77,6 +84,7 @@
 		<!-- CONTROLLERS -->
 		<script src="../../js/controllers/sidebar-menu.controller.js"></script>
 		<script src="../../js/controllers/mentor/index.controller.js"></script>
+		<script src="../../js/controllers/mentor/statistics.controller.js"></script>
 		
 		<!-- LIBRARIES TEMPLATE -->						
 		<script src="../../lib/js/jquery-1.11.3.min.js"></script>

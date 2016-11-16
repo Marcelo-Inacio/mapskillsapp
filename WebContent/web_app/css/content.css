@@ -1,0 +1,37 @@
+@CHARSET "ISO-8859-1";
+
+#content {
+	width: 83%;
+    margin-left: auto;
+}
+
+#footer {
+	bottom: 0;
+	margin: 0;
+	text-align: center;
+	font-size: 15px;
+	font: 14px/30px notosans-regular, sans-serif;
+}
+
+.container {
+	position: absolute;
+	left: 0;
+	right: 0;
+	top: 0;
+	bottom: 0;
+	overflow: hidden;
+}
+
+.center {
+	position: absolute;
+	left: 50%;
+	top: 50%;
+}
+
+@media only screen and (max-width: 768px) {
+	#content {
+		width: 100%;
+    	margin-left: auto;
+    	margin-right: auto;
+	}
+}
