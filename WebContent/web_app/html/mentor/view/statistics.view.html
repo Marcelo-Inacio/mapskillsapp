@@ -4,16 +4,16 @@
 -->
 <div class="col-sm-9 col-sm-offset-3 col-lg-10 col-lg-offset-2 main">
 
-	<div clsas="row">
+	<div class="row">
 		<md-card>
 			<md-card-content style="padding: 0px">
 				<div layout="row">
 					<h3 class="col-md-10">Estatisticas</h3>
 					<md-input-container class="col-md-2" style="float: right;">
 			          <label>Cursos</label>
-			          <md-select ng-model="courseCurrent">
-			            <md-option ng-repeat="course in courses" ng-value="course">
-			              {{course}}
+			          <md-select ng-model="selectedCourse">
+			            <md-option ng-value="course" ng-repeat="course in institution">
+			              {{course.name}}
 			            </md-option>
 			          </md-select>
 			        </md-input-container>
@@ -22,19 +22,21 @@
 		</md-card>
 	</div>
 	
-	<div style="height: 305px; margin: 10px;">
-		<div uib-carousel active="active" interval="myInterval"	no-wrap="noWrapSlides">
-			<div uib-slide ng-repeat="slide in slides track by slide.id" index="slide.id">
-				<div class="canvas-wrapper"><!-- TENTAR SLIDE.DATA e SLIDE.labels -->
-					<canvas id="base" class="chart-horizontal-bar" chart-data="data" chart-labels="labels" >
-					</canvas>
-				<div class="carousel-caption">
-					<h4>{{slide.skill}}</h4>
-					<!-- <p>{{slide.text}}</p>  -->
+	<div class="row">
+		<div style="height: 305px; margin: 10px;">
+			<div id="carousel" uib-carousel active="active" interval="myInterval" no-wrap="noWrapSlides">
+				<div uib-slide ng-repeat="slide in slides track by slide.id" index="slide.id">
+					{{ selectedCourse.skills[slide.id].type }}
+					<div class="canvas-wrapper">
+						<canvas id="base" class="chart-horizontal-bar" chart-data="selectedCourse.skills[slide.id].values" 
+							chart-labels="selectedCourse.students">
+						</canvas>
+					</div>
 				</div>
 			</div>
 		</div>
 	</div>
+	
 	
 </div>
 

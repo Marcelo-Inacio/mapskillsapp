@@ -1,57 +1,56 @@
 mapSkillsControllers.controller("StatisticsController",  function($scope) {
 
-
-	$scope.skills = ['liderança', 'visao', 'trab em equipe'];
-	$scope.courses = ['Banco de dados', 'Logistica', 'GPI', 'Aeronautica', 'Estruturas'];
+	$scope.institution = [
+		{
+			name: 'banco', 
+			students: ['Aluno A', 'Aluno B', 'Aluno C', 'Aluno D', 'Aluno E', 'Aluno F', 'Aluno G'],
+			skills:[
+				{type: 'trab em equipe', values: [35, 25, 15, 20, 30, 32, 40]},
+				{type: 'liderança', values: [30, 35, 15, 27, 20, 24, 31]},
+				{type: 'gestão de tempo', values: [18, 17, 25, 31, 27, 15, 15]}
+			]
+	    },
+		{
+			name: 'gpi',
+			students: ['Aluno A', 'Aluno B', 'Aluno C', 'Aluno D', 'Aluno E', 'Aluno F', 'Aluno G'],
+			skills:[
+				{type: 'trab em equipe', values: [15, 30, 18, 20, 22, 24, 19]},
+				{type: 'liderança', values: [35, 30, 27, 25, 14, 22, 23]},
+				{type: 'gestão de tempo', values: [10, 30, 35, 28, 29, 18, 14]}
+			]
+	    },
+		{
+			name: 'manutenção',
+			students: ['Aluno A', 'Aluno B', 'Aluno C', 'Aluno D', 'Aluno E', 'Aluno F', 'Aluno G'],
+			skills:[
+				{type: 'trab em equipe', values: [40, 35, 27, 35, 38, 39, 39]},
+				{type: 'liderança', values: [28, 28, 29, 25, 14, 30, 35]},
+				{type: 'gestão de tempo', values: [15, 22, 31, 32, 12, 15, 26]}
+			]
+	    }
+    		
+    ];
+	$scope.selectedCourse = null;
 	
-	$scope.skillCurrent = 'liderança';
-	$scope.courseCurrent = 'Banco de dados';
-	
+	/**
+	 * Configuração div id=carousel
+	 */
 	$scope.myInterval = null;
 	$scope.noWrapSlides = true;
 	$scope.active = 0;
-	var slides = $scope.slides = [];
-	var currIndex = 0;
+	
+	$scope.slides = [];
 
-	$scope.addSlide = function(type) {
-		//var newWidth = 600 + slides.length + 1;
-		slides.push({
-			skill: type,
-			id: currIndex++
+	$scope.addSlide = function(c, index) {
+		$scope.slides.push({
+			course: c,
+			id: index
 		});
 	};
 
-	$scope.randomize = function() {
-		var indexes = generateIndexesArray();
-		assignNewIndexesToSlides(indexes);
-	};
-
-	for (var i = 0; i < 3; i++) {
-		$scope.addSlide($scope.skills[i]);
+	for (var index = 0; index < $scope.institution.length; index++) {
+		$scope.addSlide($scope.institution[index], index);
 	}
 
-	// Randomize logic below
-
-	function assignNewIndexesToSlides(indexes) {
-		for (var i = 0, l = slides.length; i < l; i++) {
-			slides[i].id = indexes.pop();
-		}
-	}
-
-	function generateIndexesArray() {
-		var indexes = [];
-		for (var i = 0; i < currIndex; ++i) {
-			indexes[i] = i;
-		}
-		return shuffle(indexes);
-	}
-
-	
-	$scope.labels = ['Aluno A', 'Aluno B', 'Aluno C', 'Aluno D', 'Aluno E', 'Aluno F', 'Aluno G'];
-    $scope.series = ['Series A'];
-
-    $scope.data = [
-      [65, 59, 80, 81, 56, 55, 40],
-    ];
 
 });

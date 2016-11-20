@@ -12,7 +12,7 @@ publication.config(function($routeProvider){
 	
 	.when('/students', {
 		templateUrl: path + 'students.view.html',
-		controller: 'IndexController'
+		controller: 'StudentsController'
 	})
 	
 	.when('/statistics', {
@@ -21,7 +21,7 @@ publication.config(function($routeProvider){
 	})
 
 	.otherwise({
-		redirectTo: '/index'
+		redirectTo: '/statistics'
 	});
 	
 	
