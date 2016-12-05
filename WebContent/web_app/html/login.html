@@ -19,14 +19,17 @@
   
   	<div ng-include=" 'web_app/html/navbar-top-login.html' "></div>
   	
-	<div ng-view></div>
+	<div ui-view></div>
 	
 	<!-- LIBRARIES -->
 	<script src="lib/angular/angular.min.js"></script>
-	<script src="lib/angular-route/angular-route.min.js"></script>
+	<script src="lib/angular-ui-router/release/angular-ui-router.min.js"></script>
+	<script src="lib/jquery/dist/jquery.min.js"></script>
+	<script src="lib/bootstrap/dist/js/bootstrap.min.js"></script>
+	
 	<script src="web_app/js/util/util.js"></script>
 	
-	<!-- APP AANGULAR -->
+	<!-- ANGULAR  MODULE-->
 	<script src="web_app/js/loginApp.js"></script>
 	
 	<!-- CONTROLLERS -->
@@ -34,13 +37,6 @@
 	
 	<!-- SERVICES -->
 	<script src="web_app/js/services/login.service.js"></script>
-	
 		
-	<script src="lib/jquery/dist/jquery.min.js"></script>
-	<script src="lib/bootstrap/dist/js/bootstrap.min.js"></script>
-	
-	<script>
-		
-	</script>	
   </body>
 </html>

@@ -1,18 +1,18 @@
-window.publication =  angular.module('student', ['ngMaterial', 'ngMessages', 'ngAnimate', 'ui.bootstrap', 'ngRoute', 'mapSkillsControllers']);
+window.publication =  angular.module('student', ['ngMaterial', 'ngMessages', 'ngAnimate', 'ui.bootstrap', 'ui.router', 
+                                                 'mapSkillsControllers']);
 
-publication.config(function($routeProvider){
+publication.config(function($urlRouterProvider, $stateProvider){
 	
-	var path = 'view/';
-	$routeProvider
-
-	.when('/index', {
-		templateUrl: path + 'index.view.html',
-		controller: 'IndexController'
-	})
-
-	.otherwise({
-		redirectTo: '/index'
-	});
+	var path = '../../html/student/view/';
+	
+	$stateProvider
+		.state('game', {
+			url: '/game',
+			templateUrl: path + 'game.view.html',
+			controller: 'GameController'
+		})
+	
+	$urlRouterProvider.otherwise('/game');
 	
 	
 });

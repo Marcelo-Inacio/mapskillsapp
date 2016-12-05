@@ -1,0 +1,358 @@
+<!-- <meta charset="UTF-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">  
+		<meta name="viewport" content="width=device-width, initial-scale=1.0,maximum-scale=1">
+-->
+<audio id="over" >  
+   <source src="audio/button-40.wav" />  
+   <source src="audio/button-40.mp3" />  
+</audio>
+
+<div id="tela" class="scene1">
+	<div id="infobox" ng-mouseover="infoout();" class="infoclose">
+		<div id="left">
+			Nome:<div  id="nome">Você</div>
+			Ranking:<div id="ranking"> x/40</div>
+			Recursos:<div id="recurso"> R$ ???,00</div>
+		</div>
+	</div>
+	
+	<div id="options" class="optionclose">
+        <div class="op" id="op1" ng-mouseover="playhover()" onclick="changescene(this.innerHTML,1)">Esta é a primeira opção</div>
+        <div class="op" id="op2" ng-mouseover="playhover()" onclick="changescene(this.innerHTML,2)">Esta é a segunda opção</div>
+        <div class="op" id="op3" ng-mouseover="playhover()" onclick="changescene(this.innerHTML,3)">Esta é a terceira opção</div>
+        <div class="op" id="op4" ng-mouseover="playhover()" onclick="changescene(this.innerHTML,4)">Esta é a quarta opção</div>
+	</div>
+	<div class="textbox">
+		<div class="whotalks"></div>
+		<div id="texto">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed nisl ligula, volutpat lacinia risus eget, rutrum gravida neque. Pellentesque quis purus id erat luctus condimentum. Nulla pulvinar semper felis sed dapibus. </div>
+	</div>
+	
+	<div id="prosseguir" class="active;" onclick="openoptions();"></div>
+	<div class="info" ng-mouseover="playhover();info();" ng-mouseleave="infoout();">info</div>
+</div>
+
+<script>
+var resil=0;
+var grupo=0;
+var visao=0;
+var comun=0;
+var equil=0;
+var tempo=0;
+
+var perguntaatual=0;
+var caixatexto = document.getElementById("texto");
+var atual=0;
+var textos=[];
+ var opçoes=[];
+//1-- visão do futuro
+textos[0]="sente-se.<br />";
+textos[1]="Me diga!<br /> O que planeja daqui a 3 anos?";
+textos[2]="Hum... Interessante<br/>(o grupo conversa entre si)<br />Você é exatamente o tipo de pessoa que precisamos no momento. O cargo de Gerente é seu. Você pode começar amanhã mesmo.";
+
+
+ opçoes[0]=[{competencia:"visao",pontos:3,Resposta: "Me tornar presidente desta Rede."},{competencia:"visao",pontos:2,Resposta: "Abrir minha propria franquia."},{competencia:"visao",pontos:1,Resposta: "Planejo continuar gerenciando esta pizzaria."},{competencia:"visao",pontos:4,Resposta: "Usar as experiências adquiridas aqui para abrir o próprio negócio"}]
+ 
+//2--comunicação
+textos[3]="Bom dia, você deve ser o novo gerente.<br /> Estamos com um problema, nossas receitas não estão agradando muitos clientes, precisamos fazer algo.";
+textos[4]="Você tem alguma ideia de o que podemos fazer?";
+textos[5]="Realmente isso deve resolver o problema.";
+
+  opçoes[1]=[{competencia:"comun",pontos:1,Resposta: "Deixar os sabores mais simples, porém aumentar a quantidade de recheio."},{competencia:"comun",pontos:3,Resposta: "Fazer uma pesquisa local entre os cidadãos locais."},{competencia:"comun",pontos:2,Resposta: "Seguir o padrão da concorrencia."},{competencia:"comun",pontos:4,Resposta: "Usar o feedback dos clientes para decidir."}]
+
+//3--Gestão do tempo
+textos[6]="Mas também precisaremos comprar mais ingredientes, e temos um pequeno problema com isso tambem. A verba não está muito grande e precisamos fazer algo.";
+textos[7]=" Estes são os fornecedores disponíveis. o que deseja fazer?";
+textos[8]=" Ok, já liguei para estes, pela manha os ingredientes devem chegar.";
+
+opçoes[2]=[{competencia:"tempo",pontos:3,Resposta: "Renegociar os preços com os fornecedores."},{competencia:"tempo",pontos:4,Resposta: "Pesquisar novos fornecedores de nível superior"},{competencia:"tempo",pontos:2,Resposta: "Pesquisar fornecedores mais baratas."},{competencia:"tempo",pontos:1,Resposta: "diminuir tamanho da pizza"}]
+ 
+//4--trabalho em equipe
+textos[9]=" parece que as pizzas voltaram a vender como antes, mas nossa equipe de atendentes é muito inexperiente.";
+textos[10]=" o que planeja fazer a respeito?";
+textos[11]=" OK. Vamos por em pratica imediatamente.";
+
+opçoes[3]=[{competencia:"grupo",pontos:3,Resposta: "Contrata um atendente experiente, para suprir a demanda e coordenar a equipe."},{competencia:"grupo",pontos:4,Resposta: "Faz um programa de treinamento, supervisionado pessoalmente."},{competencia:"grupo",pontos:2,Resposta: "Discutir o problema pessoalmente com cada atendente."},{competencia:"grupo",pontos:1,Resposta: "Implementar um sistema de cotas de vendas diárias com bonificação."}]
+//5--Gestão do tempo 2
+textos[12]=" parece que temos um probleminha com as entregas.<br /> elas estão chegando muito atrasadas.";
+textos[13]=" Mas é por culpa dessa moto que fica dando problema toda hora! <br /> temos que dar um jeito nisso. ";
+textos[14]=" Opa! beleza, isso deve ajudar muito.<br /> daqui a pouco eu volto, tenho entregas a fazer!";
+
+ opçoes[4]=[{competencia:"tempo",pontos:3,Resposta: "Contratar mais um motoboy."},{competencia:"tempo",pontos:1,Resposta: "Aumentar o tempo de entrega."},{competencia:"tempo",pontos:4,Resposta: "Comprar outra moto mais potente."},{competencia:"tempo",pontos:2,Resposta: "Agilizar a cozinha dando o tempo necessário ao motoboy."}]
+//6--Equilibrio emocional
+textos[15]=" (você vê um funcionário dormindo durante o expediente)";
+textos[16]=" (você vê um funcionário dormindo durante o expediente)";
+textos[17]=" Hein?!.... Me desculpe chefe";
+
+
+  opçoes[5]=[{competencia:"equil",pontos:4,Resposta: "(Cutuca)Não é bom dormir em serviço."},{competencia:"equil",pontos:3,Resposta: "(Bate na mesa)Não quero que isso se repita."},{competencia:"equil",pontos:2,Resposta: "Cutuca o funcionário."},{competencia:"equil",pontos:1,Resposta: "Acorde, vá dormir na sua casa, quero que venha trabalhar direito amanhã"}] 
+//7--visão do futuro 2
+textos[18]=" hey! ta vendo o que ta acontecendo?<br /> parece que a crise economica está bem complicada.<br /> isso é ruim pros negócios, crise é igual a menos clientes. e agora?";
+textos[19]=" Chefe! não vimos você por aqui, o conselho superior ligou alertando sobre a crise.<br /> querem que você tome alguma atitude preventiva... ";
+textos[20]=" imediatamente!";
+
+opçoes[6]=[{competencia:"visao",pontos:4,Resposta: "Criar um serviço de entregas online."},{competencia:"visao",pontos:2,Resposta:"Criar promoções para pedidos específicos."},{competencia:"visao",pontos:3,Resposta: "Baratear o preço da entrega."},{competencia:"visao",pontos:1,Resposta: "Aumentar os preços."}]
+//8 --equilibrio emocional 2
+textos[21]=" QUE PORCARIA É ESSA!? Eu não vou comer isso aqui!<br />Mas senhor, é exatamente o que você pediu.";
+textos[22]=" (O que fazer?)";
+textos[23]=" EU QUERO FALAR COM O GERENTE! AGORA!";
+
+  opçoes[7]=[{competencia:"equil",pontos:0,Resposta: "Observar a situação a distância"},{competencia:"equil",pontos:0,Resposta:"Perguntar o que está acontecendo"},{competencia:"equil",pontos:0,Resposta: "Pedir para outro funcionário verificar a situação"},{competencia:"equil",pontos:0,Resposta: "Ignora e vai tratar de outro assunto"}]
+//8 -- equilibrio emocional 2
+textos[24]=" AI ESTÁ VOCÊ!!<br /> PODE ME DIZER O QUE É ISSO?<br />ISSO NÃO É MUÇARELA! A VERDADEIRA MUÇARELA DE BÚFALA NÃO SE COMPARA COM ESTA PORCARIA<BR /> NÃO VOU PAGAR POR UMA PIZZA HORRIVEL DESSAS.";
+textos[25]=" TENTE SABOREAR UM POUCO ESTA PORCARIA. Eae? gostou?";
+textos[26]=" Humpf... to vendo que não vai sair nada de bom daqui, eu vou embora.";
+ 
+ opçoes[8]=[{competencia:"equil",pontos:1,Resposta: "Desculpe senhor, gostaria de trocar a pizza? "},{competencia:"equil",pontos:2,Resposta: "Por favor senhor, poderia sair da fila, podemos conversar em outro lugar."},{competencia:"equil",pontos:3,Resposta: "(chama um funcionário) tente resolver isso para mim."},{competencia:"equil",pontos:4,Resposta: "Desculpe senhor, o que podemos fazer para nos desculpar."}]
+//9 --resiliencia
+textos[27]=" Os investimentos recentes não estão dando retorno, e ainda por cima, as despezas tem aumentado.";
+textos[28]=" Tem certeza que é uma boa ideia manter o projeto em andamento?";
+textos[29]=" Certo, ";
+
+  opçoes[9]=[{competencia:"resil",pontos:4,Resposta: "Manter a posição e continuar investindo no projeto "},{competencia:"resil",pontos:3,Resposta: "Reduzir o orçamento do projeto"},{competencia:"resil",pontos:1,Resposta: "Abortar o projeto"},{competencia:"resil",pontos:2,Resposta: "Postergar o projeto "}]
+ 
+//10 -- comunicação 2
+textos[30]=" Olá chefe. Sabe estive pensando um pouco e meio que..... estou precisando de um aumento.";
+textos[31]=" Será que é possivel?";
+textos[32]=" Entendo, desculpe por te incomodar.";
+
+ opçoes[10]=[{competencia:"comun",pontos:3,Resposta: "Teu aumento já está agendado para uma data futura, no momento isto é inviável. "},{competencia:"comun",pontos:2,Resposta: "Talvez em uma data futura possamos negociar um aumento mais condizente com a situação da empresa."},{competencia:"comun",pontos:1,Resposta: "Me desculpe, mas não será possível com a situação atual da empresa."},{competencia:"comun",competencia:"comun",pontos:4,Resposta: "As últimas mudanças na empresa tornaram difícil a entrega de tal beneficio sem um planejamento prévio."}]
+//11 -- resiliencia 2
+textos[33]=" Hey chefe, A demanda está muito grande! Os ingredientes estão acabando!";
+textos[34]=" O que faremos?!";
+textos[35]=" Uffa, essa foi por pouco hein.";
+
+ opçoes[11]=[{competencia:"resil",pontos:4,Resposta: "Compre mais ingredientes, vamos improvisar até você chegar!"},{competencia:"resil",pontos:3,Resposta: "Digam que vamos servir as sobremesas (é o que ainda está com uma boa quantidade) "},{competencia:"resil",pontos:1,Resposta: "Vamos improvisar com o que temos mesmo."},{competencia:"resil",pontos:2,Resposta: "peça para os fornecedores trazerem os ingredientes o mais rápido possivel!"}]
+//12 -- visão de futuro 3
+textos[36]=" Parece que abriu uma nova pizzaria na vizinhança?<br /> talvez seja por isso que as vendas tem caído.";
+textos[37]=" se não fizermos nada, pode ser que eles comprometam nosso crescimento.<br /> Tem algum plano?";
+textos[38]=" Está certo! vamos mostrar do que somos capazes!";
+
+  opçoes[12]=[{competencia:"visao",pontos:2,Resposta: "Vamos abaixar o preço das pizzas"},{competencia:"visao",pontos:4,Resposta: "Vamos dominar a entrega de pizzas, fazendo promoções acima de preço X"},{competencia:"visao",pontos:1,Resposta: "Extras para quem comprar pizzas por um tempo predeterminado."},{competencia:"visao",pontos:3,Resposta: "Contratar um serviço de publicidade."}]
+//13 -- Gestão do tempo 3
+textos[39]=" Os clientes estão voltando. A demanda está maior do que nunca, mas agora são muitos pedidos de entrega, e durante os horários de pico, não estamos dando conta.";
+textos[40]=" (a necessidade de mais funcionários é inegável, mas quando fazer as entrevistas?)";
+textos[41]=" Certo, colocarei avisos pela cidade.(A nova equipe começara o mais rápido possivel)";
+
+opçoes[13]=[{competencia:"tempo",pontos:3,Resposta: "Planeje as entrevistas para o sábado às 15h "},{competencia:"tempo",pontos:2,Resposta: "Espalhe pela cidade informações sobre as vagas de emprego, conforme chegarem faremos as entrevistas"},{competencia:"tempo",pontos:1,Resposta: "Coloque no panfleto: marquem hora para as entrevistas"},{competencia:"tempo",pontos:4,Resposta: "marque no panfleto que estarei esperando entrevistas às 15h todos os dias."}]
+ 
+ 
+//14-- Trabalho em equipe 2
+textos[42]=" Nunca imaginei que diria isso, mas nosso estoque está pequeno demais para suportar a quantidade de ingredientes que usamos semanalmente.";
+textos[43]=" Vamos deixar do jeito que está? ou faremos alguma modificação local?";
+textos[44]=" Vamos ver o que podemos fazer então";
+
+  opçoes[14]=[{competencia:"grupo",pontos:2,Resposta: "Ampliar a área física do estoque reduzindo a área de lazer dos funcionários "},{competencia:"grupo",pontos:4,Resposta: "Criar um estoque secundário externo a instalação principal."},{competencia:"grupo",pontos:3,Resposta: "Comprar ingredientes de acordo com a sua rotatividade para diminuir espaço físico ocupado"},{competencia:"grupo",pontos:1,Resposta: "Chamar os fornecedores duas vezes por dia"}]
+//15--  Resiliencia 3
+textos[45]=" Mas o que vamos fazer com esse excesso de igredientes que temos no momento?";
+textos[46]=" Eles vão perecer logo.";
+textos[47]=" E não é que é uma otima ideia!";
+
+  opçoes[15]=[{competencia:"resil",pontos:3,Resposta: "Coloco mais recheio nas pizzas "},{competencia:"resil",pontos:4,Resposta: "Diminui o preço da pizza por um tempo para ter menos prejuízo."},{competencia:"resil",pontos:3,Resposta: "Aumenta o tamanho da pizza por um tempo."},{competencia:"resil",pontos:1,Resposta: "Promoção! Ganhe um brotinho na compra de uma pizza grande."}]
+
+//16-- Equilibrio emocional 3
+
+
+textos[48]=" Ouvimos muita coisa da....<br />(celular toca com o número de emergência.)<br />Pode atender.";
+textos[49]=" (Atende)TEMOS UM PROBLEMA SERIO, ACABAMOS DE SER ASSALTADOS. O pessoal está em choque, o que devemos fazer agora?";
+textos[50]=" Certo!<br />Remarcaremos a reunião para uma data futura.<br />deixe o relatório e discutiremos sobre ele na proxima reunião.";
+
+  opçoes[16]=[{competencia:"equil",pontos:2,Resposta: "(sussurro no telefone) Façam o possível, agora estou em uma reunião.(desliga o telefone)<br /> Parece que houve um assalto na pizzaria, providencias estão sendo tomadas "},{competencia:"equil",pontos:1,Resposta: "(sussurra no telefone) Depois eu cubro as despezas"},{competencia:"equil",pontos:4,Resposta: "(sussurra no telefone) Façam o B.O., depois da reunião eu resolvo o resto<br />(Continua a reuniao...) "},{competencia:"equil",pontos:3,Resposta: "Parece que houve um assalto na pizzaria, Tenho que fazer o B.O. o mais rápido possivel. Podemos remarcar a Reunião?"}]
+//17-- Visão do futuro 4
+textos[51]=" (chegando no serviço, você vê o local bem destruido  e a equipe toda de cabeça baixa)<br /> Eis que aparece um Policial: Jovem, me disseram que é a pessoa responsavel por este local.<br /> Estamos fazendo tudo o possivel para achar o ladrão.";
+textos[52]=" Mas aconcelhamos aumentar a segurança do local.";
+textos[53]="Certo, Vamos te atualizar sobre o caso assim que possível.";
+
+opçoes[17]=[{competencia:"visao",pontos:4,Resposta: " Vou contratar seguranças para que não se repita."},{competencia:"visao",pontos:3,Resposta: "Instalarei cameras por todas as partes"},{competencia:"visao",pontos:2,Resposta: "Colocarei alarmes"},{competencia:"visao",pontos:1,Resposta: "Vou incrementar a segurança com tudo possivel, cameras, alarmes e seguranças. "}]
+//18-- Resiliencia 4
+textos[54]=" Olá, sou reporter do Jornal X.<br /> Já conversei com seus funcionários, mas será que poderia me responder uma pergunta?  ";
+textos[55]=" A sua pizzaria se tornou a mais popular na região. mas você acha que o incidente pode acarretar algum problema para os negocios?";
+textos[56]=" Muito obrigado pela breve entrevista, retornarei em breve.";
+
+  opçoes[18]=[{competencia:"resil",pontos:4,Resposta: "Aproveitaremos o ocorrido para fazer reformas que ajudarão na segurança de todos."},{competencia:"resil",pontos:3,Resposta: "De jeito nenhum, nossa equipe estará a serviço assim que forem feitas reformas"},{competencia:"resil",pontos:2,Resposta: "Após um breve descanso da equipe, voltaremos com força total."},{competencia:"resil",pontos:1,Resposta: "Não necessariamente"}]
+//19 -- trabalho em equipe 3
+textos[57]=" Aproveitando a destruição, o estabelecimento terá uma reconstrução.";
+textos[58]=" Que mensegem deixaremos para os clientes até que voltemos?";
+textos[59]=" Pronto! já está tudo em ordem";
+ 
+  opçoes[19]=[{competencia:"grupo",pontos:3,Resposta: "Aviso: reforma, voltamos em breve. "},{competencia:"grupo",pontos:2,Resposta: "Fechado para reforma"},{competencia:"grupo",pontos:1,Resposta: " Retornamos em breve."},{competencia:"grupo",pontos:4,Resposta: "REFORMA! voltamos dia X."}]
+//20-- Comunicação 3
+textos[60]=" (Você recebe a informação de que o ladrão foi preso.)<br /> Mas ao voltar o funcionamento da pizzaria, você percebe que a equipe não está muito animada.";
+textos[61]=" (como evitar o desanimo geral?)";
+textos[62]=" A equipe entende seu esforço, e tenta melhorar o humor";
+
+ opçoes[20]=[{competencia:"comun",pontos:3,Resposta: "Reuniao geral)- Mostrar a todos as mudanças implementadas."},{competencia:"comun",pontos:2,Resposta: "Avisar a todos que o bandido está preso."},{competencia:"comun",pontos:1,Resposta: "O que acham das Alterações?"},{competencia:"comun",pontos:4,Resposta: "(Fingir que nada aconteceu)"}]
+//21 --Trabalho em equipe 4
+textos[63]=" O atendente que estava sendo feito de refém durante o assalto não está tendo um bom rendimento.";
+textos[64]=" Ao ver esta situação, você...";
+textos[65]=" Obrigado.(O atendende muda sua postura.  e em alguns dias ele) Desculpe!, vou me concentrar mais.";
+ 
+  opçoes[21]=[{competencia:"grupo",pontos:3,Resposta: "Implementar trabalho transacional de 3 dias para se adequar aos poucos a rotina"},{competencia:"grupo",pontos:4,Resposta: "(Acompanha-lo e auxilia-lo de perto algumas horas por dia.)"},{competencia:"grupo",pontos:2,Resposta: "(Dá um descanço para ele)"},{competencia:"grupo",pontos:1,Resposta: "(Pedir para que ele se recomponha)"}]
+//22 -- Equilibrio Emocional 4
+textos[66]=" Parabens! sua filial foi considerada a de maior rendimento este mês, mesmo com os contratempos<br />apresentados. Mas lembre-se, seu contrato acaba no final do mês que vem. ";
+textos[67]=" Estamos aumentando o seu orçamento para que faça os preparativos. Use bem estes recursos.";
+textos[68]=" Aguardaremos o relatório no final do período.";
+
+ opçoes[22]=[{competencia:"equil",pontos:3,Resposta: "Comprar materiais novos para o(a) sucessor(a)"},{competencia:"equil",pontos:4,Resposta: "Deixar o dinheiro como fundo emergencial para a pizzaria"},{competencia:"equil",pontos:2,Resposta: "Pagar alguem para fazer um relatorio completo sobre o periodo"},{competencia:"equil",pontos:1,Resposta: "Continuar na rotina normal, e entregar um relatorio padrão"}]
+//23 -- Gestão do tempo 4
+textos[69]=" Está preocupado com alguma coisa? Você não parece estar muito bem.";
+textos[70]=" (ninguem está ciente de sua saida)Precisa de alguma coisa?";
+textos[71]=" Pode contar conosco sempre que precisar. Afinal somos amigos.";
+
+  opçoes[23]=[{competencia:"tempo",pontos:4,Resposta: "Organiza a equipe para receber o novo gerente"},{competencia:"tempo",pontos:3,Resposta: "Deixa uma lista de afazeres preparada para o sucessor"},{competencia:"tempo",pontos:1,Resposta: "Se foca no dia a dia para manter a pizzaria funcionando normalmente até a sucessão"},{competencia:"tempo",pontos:1,Resposta: "Deixa todo o ambiente pronto para a sucessão sozinho, para evitar despedidas."}]
+//24 - Comunicação 4
+textos[72]=" Bom dia. Parece que hoje é o dia da sucessão. ";
+textos[73]=" Quais foram as dificuldades enfrentadas durante estes 6 meses?";
+textos[74]=" Foi bom trabalhar contigo, Obrigado por seu serviço.";
+
+   opçoes[24]=[{competencia:"comun",pontos:3,Resposta: "Os funcionários estavam completamente desfocados sem ninguem no comando"},{competencia:"comun",pontos:4,Resposta: "Não havia administração competente dos recursos"},{competencia:"comun",pontos:2,Resposta: "Mau aproveitamento do espaço e dá equipe"},{competencia:"comun",pontos:1,Resposta: "Acomodação dos funcionários."}]
+ 
+ 
+ //variaveis vergonhosas
+
+
+advancetext();
+resposta=0;
+var i=2;
+var hover = document.getElementById("over");
+
+function info() {
+	var opic = document.getElementById("infobox");
+	opic.className="infoopen";
+}
+function infoout() {
+	var opic = document.getElementById("infobox");
+	opic.className="infoclose";
+}
+$scope.playhover = function () {
+	hover.currentTime=0;
+	hover.play();
+}
+
+function openoptions(){
+	resposta=resposta+1;
+	if (resposta==2){
+		
+		resposta=0;
+	}else{
+		document.getElementById("op1").innerHTML=opçoes[perguntaatual][0].Resposta;
+		document.getElementById("op2").innerHTML=opçoes[perguntaatual][1].Resposta;
+		document.getElementById("op3").innerHTML=opçoes[perguntaatual][2].Resposta;
+		document.getElementById("op4").innerHTML=opçoes[perguntaatual][3].Resposta;
+		document.getElementById("options").className="optionopen";
+		document.getElementById("prosseguir").className="inactive";
+		perguntaatual++;
+	}	
+	var tela = document.getElementById("tela")
+	tela.className="scene"+i;
+	i=i+1;
+	
+	
+	advancetext();
+}
+function pontuar(){
+		switch (opçoes[perguntaatual-1][0].competencia) {
+			case "resil":
+				resil =resil+opçoes[perguntaatual-1][0].pontos;
+			break;
+			case "visao":
+				visao =visao+opçoes[perguntaatual-1][0].pontos;
+			break;
+			case "comun":
+				comun =comun+opçoes[perguntaatual-1][0].pontos;
+			break
+			case "equil":
+				equil =equil+opçoes[perguntaatual-1][0].pontos;
+			break
+			case "tempo":
+				tempo =tempo+opçoes[perguntaatual-1][0].pontos;
+			break;
+			default:
+				grupo =grupo+opçoes[perguntaatual-1][0].pontos;
+		}
+
+
+}
+function changescene(escolha,opt){
+
+	if(escolha==opçoes[perguntaatual-1][opt-1].Resposta){
+		switch (opçoes[perguntaatual-1][opt-1].competencia) {
+			case "resil":
+				resil =resil+opçoes[perguntaatual-1][opt-1].pontos;
+			break;
+			case "visao":
+				visao =visao+opçoes[perguntaatual-1][opt-1].pontos;
+			break;
+			case "comun":
+				comun =comun+opçoes[perguntaatual-1][opt-1].pontos;
+			break
+			case "equil":
+				equil =equil+opçoes[perguntaatual-1][opt-1].pontos;
+			break
+			case "tempo":
+				tempo =tempo+opçoes[perguntaatual-1][opt-1].pontos;
+			break;
+			default:
+				grupo =grupo+opçoes[perguntaatual-1][opt-1].pontos;
+		}
+		
+	}
+	
+	var tela = document.getElementById("tela");
+	tela.className="scene"+i;
+	
+	i=i+1;
+	var opic = document.getElementById("options");
+	
+	opic.className="optionclose";
+	
+	document.getElementById("prosseguir").className="active";
+	
+	advancetext();
+}
+function criarcompetencia(competencia, pontos){
+		document.getElementById("relat").innerHTML+=competencia+"<br />"+pontos+"<br />";
+}
+function advancetext(){
+		var radarData = {
+			labels : ["Visão do futuro","Resiliência","Trabalho em equipe","Comunicação","Equilibio emocional","Gestão do tempo"],
+			datasets : [
+				
+				{
+					fillColor: "rgba(63,169,245,.1)",
+					strokeColor: "rgba(63,169,245,1)",
+					pointColor : "rgba(151,187,205,1)",
+					pointStrokeColor : "#fff",
+					data : [visao,resil,grupo,comun,equil,tempo]
+				}
+			]
+		}
+		if(atual ==75){
+			
+			$("#tela").hide("fast", function(){
+				criarcompetencia("Visão do futuro:",visao);
+				criarcompetencia("Resiliência:",resil);
+				criarcompetencia("Trabalho em equipe:",grupo);
+				criarcompetencia("Comunicação:",comun);
+				criarcompetencia("Equilíbrio emocional:",equil);
+				criarcompetencia("Gestão do tempo:",tempo);
+				document.getElementById("prosseguir").className="inactive";
+				var ctx2 = document.getElementById("radarChart").getContext("2d");
+				var myNewChart = new Chart(ctx2).Radar(radarData);
+				new Chart(ctx2).Radar(radarData,options);				
+			});
+			
+			
+		} 
+
+		if (atual%2==0){
+			document.getElementById("texto").innerHTML=textos[atual];
+
+		}else{
+			document.getElementById("texto").innerHTML=textos[atual];
+		}
+		atual=atual+1;
+		
+}
+
+</script>
+

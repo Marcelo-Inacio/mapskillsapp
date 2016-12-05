@@ -1,28 +1,30 @@
-window.publication =  angular.module('mentor', ['ngMaterial', 'chart.js','ngMessages', 'ngAnimate', 'ui.bootstrap', 'ngSanitize', 'ngRoute', 'mapSkillsControllers']);
+window.publication =  angular.module('mentor', ['ngMaterial', 'chart.js','ngMessages', 'ngAnimate', 'ui.bootstrap', 
+                                                'ngSanitize', 'ui.route', 'mapSkillsControllers']);
 
-publication.config(function($routeProvider){
+publication.config(function($urlRouterProvider, $stateProvider){
 	
 	var path = 'view/';
-	$routeProvider
-
-	.when('/index', {
-		templateUrl: path + 'index.view.html',
-		controller: 'IndexController'
-	})
 	
-	.when('/students', {
-		templateUrl: path + 'students.view.html',
-		controller: 'StudentsController'
-	})
+	$stateProvider
+		.state('index', {
+			url: '/index',
+			templateUrl: path + 'index.view.html',
+			controller: 'IndexController'
+		})
+		
+		.state('students', {
+			url: '/students',
+			templateUrl: path + 'students.view.html',
+			controller: 'StudentsController'
+		})
+		
+		.state('statistics', {
+			url: '/statistics',
+			templateUrl: path + 'statistics.view.html',
+			controller: 'StatisticsController'
+		})
 	
-	.when('/statistics', {
-		templateUrl: path + 'statistics.view.html',
-		controller: 'StatisticsController'
-	})
-
-	.otherwise({
-		redirectTo: '/statistics'
-	});
+	$urlRouterProvider.otherwise('/statistics');
 	
 	
 });

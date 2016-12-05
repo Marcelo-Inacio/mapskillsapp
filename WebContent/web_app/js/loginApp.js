@@ -1,17 +1,15 @@
-window.publication =  angular.module('login', ['ngRoute', 'mapSkillsControllers']);
+window.publication =  angular.module('login', ['ui.router', 'mapSkillsControllers']);
 
-publication.config(['$routeProvider', function ($routeProvider) {
+publication.config(['$urlRouterProvider', '$stateProvider', function ($urlRouterProvider, $stateProvider) {
 	
-	$routeProvider
+	$stateProvider
+		.state('login', {
+			url: '/login',
+			templateUrl: 'web_app/html/login.view.html',
+			controller: 'LoginController'
+		})
 
-	.when('/login', {
-		templateUrl: 'web_app/html/login.view.html',
-		controller: 'LoginController'
-	})
-
-	.otherwise({
-		redirectTo: '/login'
-	});
+	$urlRouterProvider.otherwise('/login');
 	
 }]);
 

@@ -5,7 +5,7 @@ mapSkillsControllers.controller("SideBarMenuController",  function($scope, login
 	
 	$scope.user;
 	
-	$scope.ngclass = [{indexClass : "active"},
+	$scope.ngclass = [{dashbordClass : "active"},
 	                  {institutionsClass : ""},
 	                  {themesClass : ""},
 	                  {skillsClass : ""},
@@ -24,7 +24,7 @@ mapSkillsControllers.controller("SideBarMenuController",  function($scope, login
 		document.location.href = '#/' + page;
 	}
 	
-	_goPage("index");
+	_goPage("dashbord");
 	
 	(function(){
 		$scope.user = StorageHelper.getItem('user');

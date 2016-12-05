@@ -1,34 +1,36 @@
 window.publication =  angular.module('administrator', ['ngMaterial', 'ngMessages', 'ngAnimate', 'ui.bootstrap', 
-                                                       'ngRoute', 'chart.js', 'mapSkillsControllers']);
+                                                       'ui.router', 'chart.js', 'mapSkillsControllers']);
 
-publication.config(function($routeProvider){
+publication.config(function($urlRouterProvider, $stateProvider){
 	
 	var path = '../../html/admin/view/';
-	$routeProvider
 	
-	.when('/index', {
-		templateUrl: path + 'index.view.html',
-		controller: 'IndexController'
-	})
+	$stateProvider
+		.state('dashbord', {
+			url: '/dashbord',
+			templateUrl: path + 'dashbord.view.html',
+			controller: 'IndexController'
+		})
+		
+		.state('institutions', {
+			url: '/institutions',
+			templateUrl: path + 'institutions.view.html',
+			controller: 'InstitutionsController'
+		})
+		
+		.state('themes', {
+			url: '/themes',
+			templateUrl: path + 'themes.view.html',
+			controller: 'ThemesController'
+		})
+		
+		.state('skills', {
+			url: '/skills',
+			templateUrl: path + 'skills.view.html',
+			controller: 'SkillsController'
+		})
 	
-	.when('/institutions', {
-		templateUrl: path + 'institutions.view.html',
-		controller: 'InstitutionsController'
-	})
-	
-	.when('/themes', {
-		templateUrl: path + 'themes.view.html',
-		controller: 'ThemesController'
-	})
-	
-	.when('/skills', {
-		templateUrl: path + 'skills.view.html',
-		controller: 'SkillsController'
-	})
-	
-	.otherwise({
-		redirectTo: '/index'
-	});
+	$urlRouterProvider.otherwise('/index');
 	
 	
 });

@@ -15,6 +15,7 @@
 		
 		<!-- STYLES -->
 		<link href="../../css/content.css" rel="stylesheet">
+		<link href="../../css/student.game.css" rel="stylesheet">
 		
 		<!-- Loading third party fonts -->
 		<link rel="stylesheet" href="../../lib/css/font-awesome.min.css">
@@ -46,28 +47,28 @@
 			
 			<!-- <div ng-include=" 'web_app/html/admin/sidebar-menu-admin.html' "></div>  -->
 						
-			<div ng-view></div>
+			<div ui-view></div>
 				
 		</div>
 
 
 		<!-- ANGULAR JS -->
-		<script src="../../lib/js/angular.min.js"></script>
-		<script src="../../lib/js/angular-route.js"></script>
-		<script src="../../lib/js/angular-locale_pt-br.js"></script>
+		<script src="../../../lib/angular/angular.min.js"></script>
+		<script src="../../../lib/angular-ui-router/release/angular-ui-router.min.js"></script>
+		<script src="../../../lib/angular-locale-pt-br/angular-locale_pt-br.js"></script>
 
 		<!-- LIBRARIES -->
-		<script src="../../lib/js/Chart.js"></script>
-		<script src="../../lib/js/ui-bootstrap.js"></script>
-		<script src="../../lib/js/angular-chart.min.js"></script>
-		<script src="../../lib/js/angular-animate.min.js"></script>
-		<script src="../../lib/js/angular-aria.min.js"></script>
-		<script src="../../lib/js/angular-messages.min.js"></script>
+		<script src="../../../lib/chart/dist/Chart.min.js"></script>
+		<script src="../../../lib/angular-chart/angular-chart.js"></script>
+		<script src="../../../lib/angular-bootstrap/ui-bootstrap.js"></script>
+		<script src="../../../lib/angular-animate/angular-animate.min.js"></script>
+		<script src="../../../lib/angular-aria/angular-aria.min.js"></script>
+		<script src="../../../lib/angular-messages/angular-messages.min.js"></script>
 		
 		<!-- Angular Material Library -->
-		<script src="../../lib/js/angular-material.min.js"></script>
+		<script src="../../../lib/angular-material/angular-material.min.js"></script>
 		
-		<!-- APP AANGULAR -->
+		<!-- ANGULAR MODULE-->
 		<script src="../../js/studentApp.js"></script>
 		<script src="../../js/util/util.js"></script>
 
@@ -77,13 +78,14 @@
 		
 		<!-- CONTROLLERS -->
 		<script src="../../js/controllers/sidebar-menu.controller.js"></script>
-		<script src="../../js/controllers/student/index.controller.js"></script>
+		<script src="../../js/controllers/student/game.controller.js"></script>
 		
 		<!-- LIBRARIES TEMPLATE -->						
-		<script src="../../lib/js/jquery-1.11.3.min.js"></script>
-		<script src="../../lib/js/bootstrap.min.js"></script>
+		<script src="../../../lib/jquery/dist/jquery.min.js"></script>
+		
+		<script src="../../../lib/bootstrap/dist/js/bootstrap.min.js"></script>
+		<script src="../../../lib/bootstrap-datepicker/dist/js/bootstrap-datepicker.min.js"></script>
 		<script src="../../lib/js/alertify.js"></script>
-		<script src="../../lib/js/bootstrap-datepicker.js"></script>
 		<script src="../../lib/js/easypiechart.js"></script>
 		
 		<script src="../../lib/js/chart-data.js"></script>
