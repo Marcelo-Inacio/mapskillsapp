@@ -1,0 +1,22 @@
+{
+  "name": "mapskillsApp",
+  "version": "1.0.0",
+  "description": "aplicação web do projeto 'map skills', Trabalho de Graduação FATEC",
+  "main": "index.html",
+  "scripts": {
+    "start": "http-server ../ -a 192.168.1.16 -p 8080",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "angularjs",
+    "gulp",
+    "npm"
+  ],
+  "author": "marcelo inacio",
+  "license": "ISC",
+  "devDependencies": {
+    "browser-sync": "^2.18.5",
+    "browser-sync-spa": "^1.0.3",
+    "gulp": "^3.9.1"
+  }
+}

@@ -2,7 +2,7 @@
 
 #content {
 	width: 83%;
-  margin-left: auto;
+    margin-left: auto;
 }
 
 #footer {
@@ -16,7 +16,7 @@
 #carousel {
 	width: 50%;
 	margin-left: auto;
-  margin-right: auto;
+    margin-right: auto;
 }
 
 #change-slide {
@@ -51,8 +51,8 @@
 @media only screen and (max-width: 768px) {
 	#content {
 		width: 100%;
-    margin-left: auto;
-    margin-right: auto;
+    	margin-left: auto;
+    	margin-right: auto;
 	}
 	#carousel {
 		width: 100%;
@@ -61,12 +61,10 @@
 
 .listdemoListControls md-divider {
   margin-top: 0;
-  margin-bottom: 0;
-}
+  margin-bottom: 0; }
 
 .listdemoListControls md-list {
-  padding-top: 0;
-}
+  padding-top: 0; }
 
 .listdemoListControls md-list-item > p,
 .listdemoListControls md-list-item > .md-list-item-inner > p,
@@ -79,5 +77,4 @@
   -ms-user-select: none;
   /* IE 10+ */
   user-select: none;
-  /* Likely future */
-}
+  /* Likely future */ }

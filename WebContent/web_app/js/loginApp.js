@@ -1,7 +1,7 @@
-window.publication =  angular.module('login', ['ui.router', 'mapSkillsControllers']);
+window.publication =  angular.module('loginOld', ['ui.router', 'mapSkillsControllers']);
 
 publication.config(['$urlRouterProvider', '$stateProvider', function ($urlRouterProvider, $stateProvider) {
-	
+
 	$stateProvider
 		.state('login', {
 			url: '/login',
@@ -10,7 +10,7 @@ publication.config(['$urlRouterProvider', '$stateProvider', function ($urlRouter
 		})
 
 	$urlRouterProvider.otherwise('/login');
-	
+
 }]);
 
 

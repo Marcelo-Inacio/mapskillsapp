@@ -61,5 +61,8 @@ $RECYCLE.BIN/
 
 # Windows shortcuts
 *.lnk
+
+# Builds dependences
 /build/
 /WebContent/lib/
+/WebContent/node_modules/
