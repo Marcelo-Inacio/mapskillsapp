@@ -2,6 +2,6 @@
   'use strict';
 
   angular
-    .module('mapskill', ['login', 'ui.router']);
+    .module('mapskill', ['login', 'student', 'ui.router']);
 
 })();

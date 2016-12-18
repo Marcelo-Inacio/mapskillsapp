@@ -192,9 +192,14 @@
 }
 
 .optionclose {
-	visibility: hidden;
+/* 	visibility: hidden; */
 	height: 10px;
 	width: 10px;
+}
+
+.optionopen {
+/* 	visibility: visible; */
+	height: 350px;
 }
 
 .active {
@@ -207,11 +212,6 @@
 
 .inactive {
 	visibility: hidden;
-}
-
-.optionopen {
-	visibility: visible;
-	height: 350px;
 }
 
 .infoclose {
