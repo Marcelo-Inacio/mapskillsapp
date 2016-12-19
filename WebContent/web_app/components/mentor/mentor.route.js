@@ -1,16 +1,17 @@
+/*
 (function() {
   'use strict';
 
-  angular
-    .module('mentor')
-    .config(routerMentor);
-
+//  angular
+//    .module('mentor')
+//    .config(routerMentor);
+*/
     /**@ngInject */
-    function routerMentor($stateProvider, $urlRouterProvider) {
+    /*function routerMentor($stateProvider, $urlRouterProvider) {
       $stateProvider
-    		.state('index', {
+    		.state('dashborard', {
     			url: '/',
-    			templateUrl: 'view/index.view.html',
+    			templateUrl: 'view/dashborard.view.html',
     			controller: 'IndexController'
     		})
 
@@ -26,7 +27,8 @@
     			controller: 'StatisticsController'
     		})
 
-    	$urlRouterProvider.otherwise('/');
+    	$urlRouterProvider.otherwise('/xpto');
     }
 
 })();
+*/

@@ -15,6 +15,7 @@ function acmeNavbar() {
 
 	/** @ngInject */
 	function NavbarController(LoginService) {
+		
 		var vm = this;
 		vm.user = false;
 		  
@@ -22,9 +23,10 @@ function acmeNavbar() {
 			vm.user = StorageHelper.getItem('user');
 		})();
 	  
-	  vm.logout = function () {
-		LoginService.logout();
-	  }
+		vm.logout = function () {
+			console.log('saindo..');
+			LoginService.logout();
+		}
 
   }
 

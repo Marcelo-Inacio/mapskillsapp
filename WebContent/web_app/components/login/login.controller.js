@@ -12,7 +12,7 @@
 		var userIsLogged = false;
 
 		vm.userLogin = {username: null, password: null};
-
+		
 		/** realiza login na aplicação */
 		vm.login = function (login) {
 			if(login.username == null || login.password == null) {
