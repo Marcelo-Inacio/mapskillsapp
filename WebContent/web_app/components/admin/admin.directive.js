@@ -1,4 +1,4 @@
-(function() {
+/*(function() {
 	'use strict';
 
 	angular
@@ -8,4 +8,4 @@
     angular
   		.module('admin')
   		.directive('acmeSidebar', acmeSidebar);
-})();
+})();*/

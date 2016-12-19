@@ -2,13 +2,16 @@
 	'use strict';
 
 	angular
-	.module('admin')
+	.module('mapskill')
 	.controller('AdminDashboardController', AdminDashboardController);
 
 	/** @ngInject */
 	function AdminDashboardController() {
 		var vm = this;
 
+		(function() {
+			console.log('entrou aqui');
+		})();
 	}
 
 })();

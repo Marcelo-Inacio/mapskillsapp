@@ -1,33 +1,43 @@
-function acmeNavbar() {
-	
-	var directive = {
-		restrict: 'AE',
-		templateUrl: 'web_app/shared/navbar/navbar.html',
-		scope: {
-			creationDate: '='
-		},
-		controller: NavbarController,
-		controllerAs: 'vm',
-		bindToController: true			
-	};
-	  
-	return directive;
+(function() {
+  'use strict';
 
-	/** @ngInject */
-	function NavbarController(LoginService) {
+  angular
+    .module('mapskill')
+    .directive('acmeNavbar', acmeNavbar);
+  
+  	
+  	/** @ngInject */
+	function acmeNavbar() {
 		
-		var vm = this;
-		vm.user = false;
+		var directive = {
+			restrict: 'AE',
+			templateUrl: 'web_app/shared/navbar/navbar.html',
+			scope: {
+				creationDate: '='
+			},
+			controller: NavbarController,
+			controllerAs: 'vm',
+			bindToController: true			
+		};
 		  
-		(function() {
-			vm.user = StorageHelper.getItem('user');
-		})();
-	  
-		vm.logout = function () {
-			console.log('saindo..');
-			LoginService.logout();
+		return directive;
+	
+		/** @ngInject */
+		function NavbarController(LoginService) {
+			
+			var vm = this;
+			vm.user = false;
+			  
+			(function() {
+				vm.user = StorageHelper.getItem('user');
+			})();
+		  
+			vm.logout = function () {
+				console.log('saindo..');
+				LoginService.logout();
+			}
+	
 		}
-
-  }
-
-}
+	
+	}
+})();

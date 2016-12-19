@@ -9,10 +9,10 @@
 		</div>
 	</form>
 	<ul class="nav menu">
-		<li ng-class="ngclass.dashbordClass" ng-click="goPage('dashbord');"><a href=""><svg class="glyph stroked dashboard-dial"><use xlink:href="#stroked-dashboard-dial"></use></svg> Dashboard</a></li>
-		<li ng-class="ngclass.institutionsClass" ng-click="goPage('institutions');"><a href=""><svg class="glyph stroked calendar"><use xlink:href="#stroked-calendar"></use></svg> Instituições</a></li>
-		<li ng-class="ngclass.themesClass" ng-click="goPage('themes');"><a href=""><svg class="glyph stroked line-graph"><use xlink:href="#stroked-line-graph"></use></svg> Temas</a></li>
-		<li ng-class="ngclass.skillsClass" ng-click="goPage('skills');"><a href=""><svg class="glyph stroked table"><use xlink:href="#stroked-table"></use></svg> Competências</a></li>
+		<li ng-class="vm.ngclass.dashboardClass" ng-click="vm.goPage('dashboard');"><a href=""><svg class="glyph stroked dashboard-dial"><use xlink:href="#stroked-dashboard-dial"></use></svg> Dashboard</a></li>
+		<li ng-class="vm.ngclass.institutionsClass" ng-click="vm.goPage('institutions');"><a href=""><svg class="glyph stroked calendar"><use xlink:href="#stroked-calendar"></use></svg> Instituições</a></li>
+		<li ng-class="vm.ngclass.themesClass" ng-click="vm.goPage('themes');"><a href=""><svg class="glyph stroked line-graph"><use xlink:href="#stroked-line-graph"></use></svg> Temas</a></li>
+		<li ng-class="vm.ngclass.skillsClass" ng-click="vm.goPage('skills');"><a href=""><svg class="glyph stroked table"><use xlink:href="#stroked-table"></use></svg> Competências</a></li>
 		<li ng-class="class"><a href="#/"><svg class="glyph stroked pencil"><use xlink:href="#stroked-pencil"></use></svg> Funcionalidade</a></li>
 		<li class="parent ">
 			<a href="">
@@ -35,9 +35,7 @@
 					</a>
 				</li>
 			</ul>
-		</li>
-		<li role="presentation" class="divider"></li>
-		<li><a href="index.html"><svg class="glyph stroked male-user"><use xlink:href="#stroked-male-user"></use></svg> Login Page</a></li>
+		</li>		
 	</ul>
 
 </div><!--/.sidebar-->

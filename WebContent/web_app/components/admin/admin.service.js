@@ -2,7 +2,7 @@
 	'use strict';
 
 	angular
-		.module('admin')
+		.module('mapskill')
 		.factory('AdminService', ['$http', '$q', AdminService]);
 
 		/** @ngInject */

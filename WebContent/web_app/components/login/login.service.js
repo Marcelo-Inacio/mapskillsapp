@@ -3,10 +3,10 @@
 
 	angular
 		.module('login')
-		.factory('LoginService', ['$http', '$q', '$location', LoginService]);
+		.factory('LoginService', ['$http', '$q', '$location', '$state', LoginService]);
 
 		/** @ngInject */
-		function LoginService($http, $q, $location) {
+		function LoginService($http, $q, $location, $state) {
 			return {
 				login : _login,
 				logout : _logout,
@@ -17,9 +17,9 @@
 			/** realiza uma chamada ao back end para autenticar o login*/
 			function _login(login) {
 				console.error(login);
-				var deferred = $q.defer();
+//				var deferred = $q.defer();
 
-			    $http({
+/*			    $http({
 			        method: 'POST',
 			        url: getDefaultUrlPath() + '/login',
 			        headers: {'Content-Type': 'application/json'},
@@ -39,7 +39,8 @@
 	      		function errorCallback(response) {
 	      			alert('erro ao fazer login');
 			     	//deferred.reject("no authentication");
-	      		});
+	      		});*/
+	        	_redirect("ADMINISTRATOR");
 			}
 			/** ao realizar logout limpa todas informações contidas no storage */
 			function _logout() {
@@ -66,20 +67,19 @@
 				console.log(profile)
 				switch(profile) {
 					case 'ADMINISTRATOR':
-						console.log("aquiiiiiiiiiii");
-						$location.path('http://www.google.com');
+						$state.go('admin.dashboard');
 						break;
 				    case 'MENTOR':
-				    	console.log("mentor");
-//				    	$state.go("mentor.dashboard");
+				    	console.log("mentor.dashboard");
+				    	$state.go('mentor.dashboard');
 				    	break;
 				    case 'STUDENT':
 				    	console.log("estudante");
-//				    	$state.go("student.game");
+				    	$state.go('student.game');
 				    	break;
-//				    default:
-//				    	$state.go("login.login");
-//				      	break;
+				    default:
+				    	$state.go('account.login');
+				      	break;
 				}
 			}
 		}

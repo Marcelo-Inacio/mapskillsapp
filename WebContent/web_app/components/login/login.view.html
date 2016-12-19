@@ -10,17 +10,17 @@
 				<form role="form">
 					<fieldset>
 						<div class="form-group">
-							<input class="form-control" ng-model="vm.userLogin.username" placeholder="E-mail" name="email" type="email" autofocus="" required="">
+							<input class="form-control" ng-model="loginCtrl.userLogin.username" placeholder="E-mail" name="email" type="email" autofocus="" required="">
 						</div>
 						<div class="form-group">
-							<input class="form-control" ng-model="vm.userLogin.password" placeholder="Password" name="password" type="password" value="" required="">
+							<input class="form-control" ng-model="loginCtrl.userLogin.password" placeholder="Password" name="password" type="password" value="" required="">
 						</div>
 						<div class="checkbox">
 							<label>
 								<input name="remember" type="checkbox" value="Remember Me">Remember Me
 							</label>
 						</div>
-						<input type="submit" ng-click="alert('789');" class="btn btn-primary" value="Entrar"></input>
+						<input href="" ng-click="loginCtrl.login(loginCtrl.userLogin);" type="submit" class="btn btn-primary" value="Entrar"></input>
 					</fieldset>
 				</form>
 			</div>

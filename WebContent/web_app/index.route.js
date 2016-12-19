@@ -8,34 +8,31 @@
 	/** @ngInject */
 	function routerConfig($stateProvider, $urlRouterProvider) {
 		$stateProvider
-			.state('account', {
-				url: '/account',
-				templateUrl: 'web_app/components/login/login.html'
+			.state('main', {
+				templateUrl: 'web_app/components/main/main.html',
+					controller: 'LoginController',
+					controllerAs: 'loginCtrl'
 			})
-			.state('account.login', {
+			.state('main.login', {
 				url: '/login',
-				templateUrl: 'web_app/components/login/login.view.html',
-				controller: 'LoginController',
-				controllerAs: 'vm'
+				templateUrl: 'web_app/components/login/login.view.html'
 			})
 			
 			.state('student', {
 				url: '/student',
 				templateUrl: 'web_app/components/student/student.html',
-				//controller: 'StudentController',
-				//controllerAs: 'vm'
 			})
 			.state('student.game', {
 				url: '/game',
 				templateUrl: 'web_app/components/student/view/game.view.html',
-				controller: 'StudentController',
-				controllerAs: 'vm'
-			});/*
+//				controller: 'StudentController',
+//				controllerAs: 'studentCtrl'
+			})
 			.state('student.result', {
 				url: '/result',
 				templateUrl: 'web_app/components/student/view/result.view.html',
-				//controller: 'StudentController',
-				//controllerAs: 'vm'
+//				controller: 'StudentController',
+//				controllerAs: 'studentCtrl'
 			})
 	
 			.state('admin', {
@@ -45,23 +42,26 @@
 			.state('admin.dashboard', {
 				url: '/dashboard',
 				templateUrl: 'web_app/components/admin/view/dashboard.view.html',
-				controller: 'AdminDashboardController',
-				controllerAs: 'vm'
+//				controller: 'AdminDashboardController',
+//				controllerAs: 'admDashCtrl'
 			})
 			.state('admin.institutions', {
-				url: '/institutions',
+				url: 'institutions',
 				templateUrl: 'web_app/components/admin/view/institutions.view.html',
-				//controller: 'InstitutionsController'
+//				controller: 'AdminInstitutionsController',
+//				controllerAs: 'admInstCtrl'
 			})
 			.state('admin.themes', {
 				url: '/themes',
 				templateUrl: 'web_app/components/admin/view/themes.view.html',
-				//controller: 'ThemesController'
+//				controller: 'AdminThemesController',
+//				controllerAs: 'admThemesCtrl'
 			})
 			.state('admin.skills', {
 				url: '/skills',
 				templateUrl: 'web_app/components/admin/view/skills.view.html',
-				//controller: 'SkillsController'
+//				controller: 'AdminSkillsController',
+//				controllerAs: 'admSkillsCtrl'
 			})
 	
 			.state('mentor', {
@@ -69,24 +69,26 @@
 				templateUrl: 'web_app/components/mentor/mentor.html',
 			})
 			.state('mentor.dashboard', {
-				url: '/dashboard',
+//				url: '/dashboard',
 				templateUrl: 'web_app/components/mentor/view/dashboard.view.html',
-				controller: 'MentorDashboardController',
-				controllerAs: 'vm'
+//				controller: 'MentorDashboardController',
+//				controllerAs: 'mentorDashCtrl'
 				
 			})
 			.state('mentor.students', {
 				url: '/students',
 				templateUrl: 'web_app/components/mentor/view/students.view.html',
-				//controller: 'StudentsController'
+//				controller: 'MentorStudentsController',
+//				controllerAs: 'mentorStudentCtrl'
 			})
 			.state('mentor.statistics', {
 				url: '/statistics',
 				templateUrl: 'web_app/components/mentor/view/statistics.view.html',
-				//controller: 'StatisticsController'
-			});*/
+//				controller: 'MentorStatisticsController',
+//				controllerAs: 'mentorStatisticsCtrl'
+			});
 	
-			$urlRouterProvider.otherwise('/account/login');
+		$urlRouterProvider.otherwise('/admin/dashboard');
 
 	}
 
